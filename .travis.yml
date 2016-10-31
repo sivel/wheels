@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - 2.7
+
+os:
+  - osx
+
+matrix:
+  include:
+    - osx_image: xcode7.1
+    - osx_image: xcode7.3
+    - osx_image: xcode8
+
+script:
+  - for V in `curl -s https://pypi.python.org/simple/python-ldap/ | egrep -o '\d+\.\d+\.\d+' | sort -u`; do pip wheel python-ldap==$V; done;
+
+addons:
+  artifacts: true
+  debug: true
