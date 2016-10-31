@@ -8,8 +8,8 @@ matrix:
     - osx_image: xcode8
 
 install:
-  - curl -s https://bootstrap.pypa.io/get-pip.py | python
-  - pip install wheel
+  - sudo curl -s https://bootstrap.pypa.io/get-pip.py | python
+  - sudo pip install wheel
 
 script:
   - for V in `curl -s https://pypi.python.org/simple/python-ldap/ | egrep -o '\d+\.\d+\.\d+' | sort -u`; do pip wheel python-ldap==$V; done;
